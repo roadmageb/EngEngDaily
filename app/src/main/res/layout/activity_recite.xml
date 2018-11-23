@@ -1,35 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ReciteActivity">
-
-    <TextView
-        android:id="@+id/DayTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="오늘은 목요일"
-        android:textAlignment="center"
-        android:textSize="40dp"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="30dp" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="150dp"
-        android:layout_height="87dp"
-        android:text="Button"
-        tools:layout_editor_absoluteX="117dp"
-        tools:layout_editor_absoluteY="194dp" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="115dp"
-        android:layout_height="69dp"
-        android:text="Button"
-        tools:layout_editor_absoluteX="135dp"
-        tools:layout_editor_absoluteY="341dp" />
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
 </android.support.constraint.ConstraintLayout>
