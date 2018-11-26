@@ -39,6 +39,7 @@ public class WordBase {
             unWord.remove(tmp);
         }
     }
+    public boolean getContains(String key) { return wordDB.containsKey(key);}
     public String getMeaning (String key){
         return wordDB.get(key);
     }
