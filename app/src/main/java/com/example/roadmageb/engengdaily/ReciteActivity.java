@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.text.util.Linkify;
 
 public class ReciteActivity extends AppCompatActivity {
     int index = 0;
@@ -13,6 +14,7 @@ public class ReciteActivity extends AppCompatActivity {
     Button nextBtn;
     Button prevBtn;
     LinearLayout meaningLayout;
+    TextView meaningView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +24,8 @@ public class ReciteActivity extends AppCompatActivity {
         wordView = (TextView)findViewById(R.id.wordText);
         nextBtn = (Button)findViewById(R.id.nextButton);
         prevBtn = (Button)findViewById(R.id.prevButton);
-        meaningLayout = (LinearLayout)findViewById(R.id.parentLayout);
+        meaningView = (TextView)findViewById(R.id.meaningText);
+        //meaningLayout = (LinearLayout)findViewById(R.id.parentLayout);
         index = 0;
 
         setContents();
@@ -50,6 +53,8 @@ public class ReciteActivity extends AppCompatActivity {
     void setContents(){
         if(index == 0)
             prevBtn.setEnabled(false);
+        else
+            prevBtn.setEnabled(true);
         if(index == SelectActivity.WB.getTodayWordNum() - 1)
             nextBtn.setText("완료");
 
@@ -58,6 +63,9 @@ public class ReciteActivity extends AppCompatActivity {
         String meaning = SelectActivity.WB.getMeaning(SelectActivity.WB.getTodayByIndex(index));
         String meaningSplit[] = meaning.split(" ");
 
+        meaningView.setText(meaning);
+
+        /*
         LinearLayout newLine = new LinearLayout(this);
         meaningLayout.addView(newLine);
 
@@ -71,7 +79,8 @@ public class ReciteActivity extends AppCompatActivity {
                     }
                 });
             newLine.addView(wordTmp);
-            
+
         }
+        */
     }
 }

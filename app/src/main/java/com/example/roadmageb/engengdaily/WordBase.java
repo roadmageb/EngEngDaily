@@ -20,7 +20,7 @@ public class WordBase {
 
         wordDB.put("lucid","clear");
         wordDB.put("apple","red fruit");
-        wordDB.put("banana","yellow long fruit");
+        wordDB.put("banana","yellow long fruit. very sweet and can eat with mouth.");
         wordDB.put("kiwi","green fruit");
 
         wordStat.add(new WordStat("lucid",20));
