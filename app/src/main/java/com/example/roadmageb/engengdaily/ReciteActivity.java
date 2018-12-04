@@ -40,10 +40,13 @@ public class ReciteActivity extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(index == SelectActivity.WB.getTodayWordNum() - 1)
+                if(index == WordBase.inst.getTodayWordNum() - 1) {
+                    for (int i = 0; i < WordBase.inst.getTodayWordNum(); i++) {
+                        WordBase.inst.wordStat.add(new WordStat(WordBase.inst.getTodayByIndex(i), 20));
+                    }
                     finish();
-                else {
-                    index = Math.min(index + 1, SelectActivity.WB.getTodayWordNum() - 1);
+                }else {
+                    index = Math.min(index + 1, WordBase.inst.getTodayWordNum() - 1);
                     setContents();
                 }
             }
@@ -55,12 +58,12 @@ public class ReciteActivity extends AppCompatActivity {
             prevBtn.setEnabled(false);
         else
             prevBtn.setEnabled(true);
-        if(index == SelectActivity.WB.getTodayWordNum() - 1)
+        if(index == WordBase.inst.getTodayWordNum() - 1)
             nextBtn.setText("완료");
 
-        wordView.setText(SelectActivity.WB.getTodayByIndex(index));
+        wordView.setText(WordBase.inst.getTodayByIndex(index));
 
-        String meaning = SelectActivity.WB.getMeaning(SelectActivity.WB.getTodayByIndex(index));
+        String meaning = WordBase.inst.getMeaning(WordBase.inst.getTodayByIndex(index));
         String meaningSplit[] = meaning.split(" ");
 
         meaningView.setText(meaning);
@@ -72,7 +75,7 @@ public class ReciteActivity extends AppCompatActivity {
         for(String sptWord : meaningSplit){
             TextView wordTmp = new TextView(this);
             wordTmp.setText(sptWord);
-            if(SelectActivity.WB.getContains(sptWord.toLowerCase()))
+            if(WordBase.inst.getContains(sptWord.toLowerCase()))
                 wordTmp.setOnClickListener(new View.OnClickListener(){
                     public void onClick(View v){
 

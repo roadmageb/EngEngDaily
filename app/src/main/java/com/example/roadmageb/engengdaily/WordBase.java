@@ -1,19 +1,26 @@
 package com.example.roadmageb.engengdaily;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Random;
 
 public class WordBase {
     private HashMap<String, String> wordDB;
+    private HashMap<String, String> corrDB;
     private ArrayList<String> todayWord;
-    private ArrayList<WordStat> wordStat;
+    public ArrayList<WordStat> wordStat;
     private ArrayList<String> unWord;
+    private ArrayList<String> words;
+    public static WordBase inst = new WordBase();
+
 
     public WordBase () {
         Random random = new Random();
 
         wordDB = new HashMap<>();
+        corrDB = new HashMap<>();
         todayWord = new ArrayList<>();
         wordStat = new ArrayList<>();
         unWord = new ArrayList<>();
@@ -23,10 +30,16 @@ public class WordBase {
         wordDB.put("banana","yellow long fruit. very sweet and can eat with mouth.");
         wordDB.put("kiwi","green fruit");
 
+        corrDB.put("lucid", "clear");
+        corrDB.put("apple", "red fruit");
+        corrDB.put("banana", "yellow fruit");
+        corrDB.put("kiwi", "green fruit");
+
         wordStat.add(new WordStat("lucid",20));
         wordStat.add(new WordStat("apple",15));
 
         unWord.addAll(wordDB.keySet());
+        words.addAll(wordDB.keySet());
 
         for(WordStat ws : wordStat)
             unWord.remove(ws.word);
@@ -39,6 +52,8 @@ public class WordBase {
             unWord.remove(tmp);
         }
     }
+    public String getWordByIndex(int index) { return words.get(index); }
+    public String getCorr(String key) { return corrDB.get(key); }
     public boolean getContains(String key) { return wordDB.containsKey(key);}
     public String getMeaning (String key){
         return wordDB.get(key);
@@ -49,23 +64,13 @@ public class WordBase {
     public int getTodayWordNum(){
         return todayWord.size();
     }
-    class WordStat
-    {
-        String word;
-        int stat;
-        WordStat(String word, int stat){
-            this.word = word;
-            this.stat = stat;
-        }
-        WordStat(){
-            this.word = "";
-            this.stat = 0;
-        }
-        int getStat(){
-            return stat;
-        }
-        void setRel(int rel){
-            stat += rel;
-        }
+    public void sortWordStat() {
+        Collections.sort(wordStat, new Comparator<WordStat>() {
+            @Override
+            public int compare(WordStat o1, WordStat o2) {
+                return o2.stat.compareTo(o1.stat);
+            }
+        });
     }
+
 }
