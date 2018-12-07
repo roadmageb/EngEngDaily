@@ -8,7 +8,6 @@ import java.util.Random;
 
 public class WordBase {
     private HashMap<String, String> wordDB;
-    private HashMap<String, String> corrDB;
     private ArrayList<String> todayWord;
     public ArrayList<WordStat> wordStat;
     private ArrayList<String> unWord;
@@ -20,7 +19,6 @@ public class WordBase {
         Random random = new Random();
 
         wordDB = new HashMap<>();
-        corrDB = new HashMap<>();
         todayWord = new ArrayList<>();
         wordStat = new ArrayList<>();
         unWord = new ArrayList<>();
@@ -29,11 +27,6 @@ public class WordBase {
         wordDB.put("apple","red fruit");
         wordDB.put("banana","yellow long fruit. very sweet and can eat with mouth.");
         wordDB.put("kiwi","green fruit");
-
-        corrDB.put("lucid", "clear");
-        corrDB.put("apple", "red fruit");
-        corrDB.put("banana", "yellow fruit");
-        corrDB.put("kiwi", "green fruit");
 
         wordStat.add(new WordStat("lucid",20));
         wordStat.add(new WordStat("apple",15));
@@ -52,8 +45,8 @@ public class WordBase {
             unWord.remove(tmp);
         }
     }
+    public int getWordNum() { return words.size(); }
     public String getWordByIndex(int index) { return words.get(index); }
-    public String getCorr(String key) { return corrDB.get(key); }
     public boolean getContains(String key) { return wordDB.containsKey(key);}
     public String getMeaning (String key){
         return wordDB.get(key);
