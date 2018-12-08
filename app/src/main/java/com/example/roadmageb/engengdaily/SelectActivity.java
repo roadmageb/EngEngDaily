@@ -3,6 +3,7 @@ package com.example.roadmageb.engengdaily;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,6 +14,7 @@ public class SelectActivity extends AppCompatActivity {
     int todayDay = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        WordBase.inst=new WordBase();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select);
         Button goReciteButton = (Button)findViewById(R.id.reciteButton);
@@ -22,6 +24,8 @@ public class SelectActivity extends AppCompatActivity {
         Calendar cal = Calendar.getInstance();
         String days[] = new String[]{"일","월","화","수","목","금","토"};
         todayDay = cal.get(Calendar.DAY_OF_WEEK)-1;
+
+        todayDay=1;
 
         dayText.setText("오늘은 " + days[todayDay] + "요일");
 
