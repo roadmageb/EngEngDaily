@@ -39,8 +39,6 @@ public class SelectActivity extends AppCompatActivity {
         String days[] = new String[]{"일","월","화","수","목","금","토"};
         todayDay = cal.get(Calendar.DAY_OF_WEEK)-1;
 
-        todayDay=1;
-
         WordBase.inst.loadProgress();
 
         dayText.setText("오늘은 " + days[todayDay] + "요일");
