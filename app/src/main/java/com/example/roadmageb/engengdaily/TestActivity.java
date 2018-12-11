@@ -43,7 +43,7 @@ public class TestActivity extends AppCompatActivity {
         choose[3] = (RadioButton)findViewById(R.id.radio4);
 
         if(todayDay != 6){
-            for(int i=0; i<WordBase.inst.getTodayWordNum();i++){
+            for(int i=WordBase.inst.testList.size(); i<WordBase.inst.getTodayWordNum();i++){
                 WordBase.inst.testList.add(WordBase.inst.getTodayByIndex(i));
             }
             Collections.sort(WordBase.inst.testList, new Comparator<String>() {
@@ -54,7 +54,7 @@ public class TestActivity extends AppCompatActivity {
             });
         }else{
             WordBase.inst.sortWordStat();
-            for(int i=0;i<Math.max(20,WordBase.inst.wordStat.size());i++)
+            for(int i=0;i<Math.max(20,WordBase.inst.wordStat.size())  && WordBase.inst.testList.size() < 20;i++)
                 WordBase.inst.testList.add(WordBase.inst.wordStat.get(i).word);
             Collections.sort(WordBase.inst.testList, new Comparator<String>() {
                 @Override
@@ -63,7 +63,8 @@ public class TestActivity extends AppCompatActivity {
                 }
             });
         }
-        setQuestion(qIndex);
+        if(WordBase.inst.testProgress>=WordBase.inst.testList.size()) finish();
+        else setQuestion(qIndex);
         acButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,7 +100,7 @@ public class TestActivity extends AppCompatActivity {
 
     }
     void setQuestion(int index){
-        WordBase.inst.testProgress = qIndex+1;
+        WordBase.inst.testProgress = index+1;
         WordBase.inst.saveProgress();
         corrNum = rnd.nextInt(4);
         wordText.setText(WordBase.inst.testList.get(index));

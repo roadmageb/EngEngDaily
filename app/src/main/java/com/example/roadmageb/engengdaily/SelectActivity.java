@@ -63,8 +63,7 @@ public class SelectActivity extends AppCompatActivity {
         });
 
         goTestButton.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                if(WordBase.inst.reciteEnd == 1 || todayDay == 6) {
+            public void onClick(View v){if(WordBase.inst.reciteEnd == 1 || todayDay == 6) {
                     Intent intent = new Intent(getApplicationContext(), TestActivity.class);
                     intent.putExtra("day", todayDay);
                     startActivity(intent);
