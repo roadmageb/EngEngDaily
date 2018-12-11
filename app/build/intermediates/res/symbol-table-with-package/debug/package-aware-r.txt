@@ -793,7 +793,6 @@ id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
 id time
-id timeBar
 id title
 id titleDividerNoCustom
 id title_template
@@ -896,6 +895,7 @@ string abc_toolbar_collapse_description
 string app_name
 string search_menu_title
 string status_bar_notification_info_overflow
+string word
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog

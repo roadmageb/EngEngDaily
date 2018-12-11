@@ -41,9 +41,10 @@ public class ReciteActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(index == WordBase.inst.getTodayWordNum() - 1) {
-                    for (int i = 0; i < WordBase.inst.getTodayWordNum(); i++) {
-                        WordBase.inst.wordStat.add(new WordStat(WordBase.inst.getTodayByIndex(i), 20));
-                    }
+                    for (int i = 0; i < WordBase.inst.getTodayWordNum(); i++)
+                        WordBase.inst.setWordStat(WordBase.inst.getTodayByIndex(i));
+                    WordBase.inst.reciteEnd = 1;
+                    WordBase.inst.saveProgress();
                     finish();
                 }else {
                     index = Math.min(index + 1, WordBase.inst.getTodayWordNum() - 1);
@@ -86,4 +87,5 @@ public class ReciteActivity extends AppCompatActivity {
         }
         */
     }
+
 }
